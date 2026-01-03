@@ -10,7 +10,7 @@
 
 ---
 
-## 二、一维 DP 最通用模板
+## 二、一维 DP 通用模板
 
 适用场景：
 
@@ -43,7 +43,19 @@ int main() {
     return 0;
 }
 ```
+当递推只和前几项有关时，采用空间优化：
+```cpp
+long long a = dp[1];
+long long b = dp[2];
+long long c = dp[3];
 
+for (int i = 4; i <= n; i++) {
+    long long d = c + a; // dp[i] = dp[i-1] + dp[i-3]
+    a = b;
+    b = c;
+    c = d;
+}
+```
 ---
 
 ## 三、常见一维 DP 问题模型
